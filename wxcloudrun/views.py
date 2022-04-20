@@ -64,3 +64,14 @@ def get_count():
     """
     counter = Counters.query.filter(Counters.id == 1).first()
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
+@app.route('/api/test', methods=['GET'])
+def get_count():
+    """
+    :return: 计数的值
+    """
+    data = {
+    'no' : 1,
+    'name' : 'Runoob',
+    'url' : 'http://www.runoob.com'
+}
+    return make_succ_response(data) 
