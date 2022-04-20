@@ -65,13 +65,51 @@ def get_count():
     counter = Counters.query.filter(Counters.id == 1).first()
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
 @app.route('/api/test', methods=['GET'])
-def get_count():
+def test():
     """
     :return: 计数的值
     """
     data = {
     'no' : 1,
     'name' : 'Runoob',
-    'url' : 'http://www.runoob.com'
-}
+    'url' : 'http://www.runoob.com'}
+    return make_succ_response(data) 
+@app.route('/api/zhfw', methods=['GET'])
+def zhfw():
+    """
+    :return: 计数的值
+    """
+    data = {'AA':
+      [
+      {
+        title:'浙江省残联等六部门单位关于印发浙江省残疾儿童康复服务制度工作细则（修订版）的通知',
+        author_name:'省残联',
+        date:'2022-03-11 15:33',
+      },
+      {
+        title:'关于公布残疾人基本型辅助器具目录（第二版）的通知',
+        author_name:'省残联',
+        date:'2021-12-16 17:04',
+      },
+      {
+        title:'省残联等六部门单位关于印发浙江省残疾儿童定点康复机构协议管理办法（试行）的通知',
+        author_name:'省残联',
+        date:'2021-06-17 18:04',
+      },
+	  {
+        title:'省残联等六部门单位关于推进全省残疾儿童定点康复机构规范化提升建设的通知',
+        author_name:'省残联',
+        date:'2021-06-18 08:55',
+      },
+      {
+        title:'浙江省残疾儿童康复服务制度工作细则（修订版）政策解读',
+        author_name:'省残联',
+        date:'2022-03-11 16:02',
+      },
+      {
+        title:'浙江省残联等六部门单位关于印发浙江省残疾儿童康复服务制度工作细则（修订版）的通知',
+        author_name:'省残联',
+        date:' 2022-03-11 15:33',
+      },]
+	}
     return make_succ_response(data) 
