@@ -1,4 +1,5 @@
 from datetime import datetime
+import requests
 from flask import render_template, request
 from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
@@ -74,8 +75,12 @@ def test():
     'name' : 'Runoob',
     'url' : 'http://www.runoob.com'}
     return make_succ_response(data) 
+@app.route('/api/test1', methods=['GET'])
+def test():
+    response = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
+    return make_succ_response(response) 
 @app.route('/api/zhfw', methods=['GET'])
-def zhfw():
+def kffw():
     """
     :return: 计数的值
     """
