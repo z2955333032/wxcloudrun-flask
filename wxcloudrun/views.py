@@ -77,7 +77,7 @@ def test():
     return make_succ_response(data) 
 @app.route('/api/test1', methods=['GET'])
 def test1():
-    r = requests.get("https://v-api.2345.com/shortVideo/api/GetListByLocation?page=1&size=100&location=tianqihome-shortMovie")
+    r = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
     return make_succ_response(r.text)
 @app.route('/api/zhfw', methods=['GET'])
 def kffw():
