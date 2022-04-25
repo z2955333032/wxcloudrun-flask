@@ -78,7 +78,7 @@ def test():
 @app.route('/api/test1', methods=['GET'])
 def test1():
     response = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
-    return <h1>response</h1>
+    return <h1>response.text</h1>
 @app.route('/api/zhfw', methods=['GET'])
 def kffw():
     """
