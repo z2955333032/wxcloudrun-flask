@@ -78,12 +78,10 @@ def test():
 @app.route('/api/test1', methods=['GET'])
 def test1():
     response = requests.get("https://dhrest.2345.com/api/v1/News/weatherHomeBanner?_=1650899709025")
-    return <h1>response.text</h1>
+    return <h1>AAAA</h1>
 @app.route('/api/zhfw', methods=['GET'])
 def kffw():
-    """
-    :return: 计数的值
-    """
+    
     data = [{'title': '浙江省残联等六部门单位关于印发浙江省残疾儿童康复服务制度工作细则（修订版）的通知','author_name':'省残联','date': '2022-03-11 15:33','pageid': '11.html' },{'title': '关于公布残疾人基本型辅助器具目录（第二版）的通知','author_name': '省残联','date': '2021-12-16 17:04','pageid': '22.html'},
     {
         'title': '省残联等六部门单位关于印发浙江省残疾儿童定点康复机构协议管理办法（试行）的通知',
