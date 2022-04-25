@@ -76,9 +76,9 @@ def test():
     'url' : 'http://www.runoob.com'}
     return make_succ_response(data) 
 @app.route('/api/test1', methods=['GET'])
-def test():
+def test1():
     response = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
-    return make_succ_response(response) 
+    return <h1>response</h1>
 @app.route('/api/zhfw', methods=['GET'])
 def kffw():
     """
