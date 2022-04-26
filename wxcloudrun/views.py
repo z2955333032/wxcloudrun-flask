@@ -1,6 +1,7 @@
 from datetime import datetime
 import requests
 import json
+from flask import Response
 from flask import render_template, request
 from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
@@ -66,6 +67,7 @@ def get_count():
     """
     counter = Counters.query.filter(Counters.id == 1).first()
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
+
 @app.route('/api/test', methods=['GET'])
 def test():
     """
@@ -76,10 +78,15 @@ def test():
     'name' : 'Runoob',
     'url' : 'http://www.runoob.com'}
     return make_succ_response(data) 
+
 @app.route('/api/test1', methods=['GET'])
 def test1():
     r = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
-    return make_succ_response(r.text)
+    data = json.dumps({'code': 0, 'data': r})
+    return 'hello word'
+    #return Response(data, mimetype='application/json')
+    #return make_succ_response(r.text)
+
 @app.route('/api/zhfw', methods=['GET'])
 def kffw():
     
