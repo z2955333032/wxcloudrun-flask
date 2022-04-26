@@ -81,7 +81,7 @@ def test():
 
 @app.route('/api/test1', methods=['GET'])
 def test1():
-    r = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
+    #r = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
     #data = json.dumps({'code': 0, 'data': r})
     return 'hello word'
     #return Response(data, mimetype='application/json')
