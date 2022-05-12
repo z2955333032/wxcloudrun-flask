@@ -79,13 +79,14 @@ def test():
     'url' : 'http://www.runoob.com'}
     return make_succ_response(data) 
 
-@app.route('/api/test1', methods=['GET'])
-def test1():
-    #r = requests.get("https://api.weixin.qq.com/wxa/getwxadevinfo")
-    #data = json.dumps({'code': 0, 'data': r})
-    return 'hello word'
-    #return Response(data, mimetype='application/json')
-    #return make_succ_response(r.text)
+@app.route('/1')
+def re():
+    url = 'https://windows-7g06kkfp605c7962-1311495028.ap-shanghai.service.tcloudbase.com/api/v1.0/jdf'
+    headers = {
+        'Authorization': 'Bearer TUKBtYVT1FOqVOQ6rl7yTGcTpRwkyXFn3-scnJtYyaz4i4h9GNS0LpAdlHTla5w_0Iukv9tRC2KADQhhfuG7jbQ24F9XBHod929XGYOOAOSuENXE9eD3t5fvwhbnAzEb'}
+    res = requests.get(url=url, headers=headers)
+    d = res.json()['data']
+    return render_template('1.html',DA=d)
 
 @app.route('/api/zhfw', methods=['GET'])
 def kffw():
