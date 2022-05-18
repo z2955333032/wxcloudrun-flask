@@ -5,7 +5,7 @@ from flask import Response
 from flask import render_template, request
 from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
-from wxcloudrun.model import Counters
+from wxcloudrun.model import Counters,JDF
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 
 
@@ -100,32 +100,27 @@ def re():
     d = res.json()['data']
     return render_template('1.html',DA=d)
 
-@app.route('/api/zhfw', methods=['GET'])
-def kffw():
-    
-    data = [{'title': '浙江省残联等六部门单位关于印发浙江省残疾儿童康复服务制度工作细则（修订版）的通知','author_name':'省残联','date': '2022-03-11 15:33','pageid': '11.html' },{'title': '关于公布残疾人基本型辅助器具目录（第二版）的通知','author_name': '省残联','date': '2021-12-16 17:04','pageid': '22.html'},
-    {
-        'title': '省残联等六部门单位关于印发浙江省残疾儿童定点康复机构协议管理办法（试行）的通知',
-        'author_name': '省残联',
-        'date': '2021-06-17 18:04',
-        'pageid': '33.html'
-    },
-    {
-        'title': '省残联等六部门单位关于推进全省残疾儿童定点康复机构规范化提升建设的通知',
-        'author_name': '省残联',
-        'date': '2021-06-18 08:55',
-        'pageid': '44.html'
-    },
-    {
-        'title': '浙江省残疾儿童康复服务制度工作细则（修订版）政策解读',
-        'author_name': '省残联',
-        'date': '2022-03-11 16:02',
-        'pageid': '55.html'
-    },
-    {
-        'title': '浙江省残联等六部门单位关于印发浙江省残疾儿童康复服务制度工作细则（修订版）的通知',
-        'author_name': '省残联',
-        'date': ' 2022-03-11 15:33',
-        'pageid': '66.html'
-    },]
-    return make_succ_response(data) 
+@app.route('/api/jdf', methods=['POST'])
+def jdf():
+    params = request.get_json()
+    jdf = JDF()
+    jdf.xm=params['xm']
+    jdf.xb = params['xb']
+    jdf.csny =params['csny']
+    jdf.sfzhm =params['sfzhm']
+    jdf.hk = params['hk']
+    jdf.sjhm = params['sjhm']
+    jdf.cjzhm = params['cjzhm']
+    jdf.jtzz = params['jtzz']
+    jdf.jhrxm = params['jhrxm']
+    jdf.jhrzz = params['jhrzz']
+    jdf.jtjjqk =params['jtjjqk']
+    jdf.cjlb = params['cjlb']
+    jdf.cjdj = params['cjdj']
+    jdf.sqxm =params['sqxm']
+    jdf.pic0 = params['pic0']
+    jdf.pic1 = params['pic1']
+    jdf.pic2 = params['pic2']
+    jdf.QmPic = params['QmPic']
+    insert_counter(jdf)
+    return make_succ_response('123') 
