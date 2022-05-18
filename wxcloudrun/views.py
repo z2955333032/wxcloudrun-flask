@@ -5,7 +5,7 @@ from flask import Response
 from flask import render_template, request
 from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
-from wxcloudrun.model import Counters,JDF
+from wxcloudrun.model import Counters,JDF,JDF33
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 
 
@@ -99,6 +99,15 @@ def re():
     res = requests.get(url=url, headers=headers)
     d = res.json()['data']
     return render_template('1.html',DA=d)
+@app.route('/api/jdf33', methods=['POST'])
+def jdf33():
+    params = request.get_json()
+    print(params)
+    jdf = JDF33()
+    jdf.xm=params['xm']
+    jdf.sfzhm =params['sfzhm']
+    insert_counter(jdf)
+    return make_succ_response('JDF33') 
 
 @app.route('/api/jdf', methods=['POST'])
 def jdf():
