@@ -14,7 +14,14 @@ class Counters(db.Model):
     created_at = db.Column('createdAt', db.TIMESTAMP, nullable=False, default=datetime.now())
     updated_at = db.Column('updatedAt', db.TIMESTAMP, nullable=False, default=datetime.now())
     
-    
+class JDF33(db.Model):
+    # 设置结构体表格名称
+    __tablename__ = 'JDF33'
+
+    # 设定结构体对应表格的字段
+    id = db.Column(db.Integer, primary_key=True)
+    xm = db.Column(db.String(12))   
+    sfzhm = db.Column(db.String(99))
 class JDF(db.Model):
     # 设置结构体表格名称
     __tablename__ = 'JDF'
