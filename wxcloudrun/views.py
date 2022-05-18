@@ -79,6 +79,18 @@ def test():
     'url' : 'http://www.runoob.com'}
     return make_succ_response(data) 
 
+
+@app.route('/getTempFileURL')
+def getTempFileURL():
+    url = 'https://api.weixin.qq.com/tcb/batchdownloadfile'
+    date={
+        "env": "prod-4gbn9qf2c1863879",
+        "file_list": ["cloud://test2-4a89da.7465-test2-4a89da/A.png"]
+            }
+    res = requests.post(url=url)
+    
+    return make_succ_response(res) 
+
 @app.route('/1')
 def re():
     url = 'https://windows-7g06kkfp605c7962-1311495028.ap-shanghai.service.tcloudbase.com/api/v1.0/jdf'
