@@ -130,6 +130,6 @@ def jdf():
     jdf.pic0 = params['pic0']
     jdf.pic1 = params['pic1']
     jdf.pic2 = params['pic2']
-    jdf.QmPic = params['QmPic']
+    jdf.qmpic = params['qmpic']
     insert_counter(jdf)
     return make_succ_response('123') 
