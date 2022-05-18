@@ -45,5 +45,5 @@ class JDF(db.Model):
     pic0 = db.Column(db.String(99))
     pic1 = db.Column(db.String(99))
     pic2 = db.Column(db.String(99))
-    QmPic = db.Column(db.String(99))
+    qmpic = db.Column(db.String(99))
     _updatetime = db.Column('_updatetime', db.TIMESTAMP, nullable=False, default=datetime.now())
