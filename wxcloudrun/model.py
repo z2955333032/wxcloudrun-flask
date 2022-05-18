@@ -24,7 +24,7 @@ class JDF33(db.Model):
     sfzhm = db.Column(db.String(99))
 class JDF(db.Model):
     # 设置结构体表格名称
-    __tablename__ = 'JDF'
+    __tablename__ = 'jdf'
 
     # 设定结构体对应表格的字段
     id = db.Column(db.Integer, primary_key=True)
