@@ -85,7 +85,7 @@ def getTempFileURL():
     url = 'https://api.weixin.qq.com/tcb/batchdownloadfile'
     date={
         "env": "prod-4gbn9qf2c1863879",
-        "file_list": ["cloud://test2-4a89da.7465-test2-4a89da/A.png"]
+        "file_list": ["cloud://prod-4gbn9qf2c1863879.7072-prod-4gbn9qf2c1863879-1311495028/41b62073121f73537ff9532391f2f3e.jpg"]
             }
     res = requests.post(url=url)
     
