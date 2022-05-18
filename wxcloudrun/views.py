@@ -104,8 +104,8 @@ def jdf33():
     params = request.get_json()
     #print(params)
     jdf = JDF33()
-    jdf.xm='params[xm]'
-    jdf.sfzhm ='params[sfzhm]'
+    jdf.xm=params['xm']
+    jdf.sfzhm =params['sfzhm']
     insert_counter(jdf)
     return make_succ_response('JDF33') 
 
