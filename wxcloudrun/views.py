@@ -99,7 +99,7 @@ def re():
     res = requests.get(url=url, headers=headers)
     d = res.json()['data']
     return render_template('1.html',DA=d)
-@app.route('/api/jdf33', methods=['POST'])
+@app.route('/api/jdf33', methods=['GET'])
 def jdf33():
     #params = request.get_json()
     #print(params)
