@@ -101,11 +101,11 @@ def re():
     return render_template('1.html',DA=d)
 @app.route('/api/jdf33', methods=['POST'])
 def jdf33():
-    params = request.get_json()
-    print(params)
+    #params = request.get_json()
+    #print(params)
     jdf = JDF33()
-    jdf.xm=params['xm']
-    jdf.sfzhm =params['sfzhm']
+    jdf.xm='params[xm]'
+    jdf.sfzhm ='params[sfzhm]'
     insert_counter(jdf)
     return make_succ_response('JDF33') 
 
