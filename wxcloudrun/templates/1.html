@@ -7,19 +7,16 @@
 <body>
 
      {% for user in DA %}
-    <h1>出生年月, {{ user.CSNY }}!</h1>
+    <h1>出生年月, {{ user.csny }}!</h1>
 
 
-{% for picc in user.pic1 %}
+{% for picc in user.pic1 |strtolist %}
          <h1>PIC1:{{loop.index}}</h1>
               <img src="{{picc }}">
             {% endfor %}
           <h1>PIC1, {{user.pic1  }}!</h1>
 
-          {% for picc in user.pic2 %}
-         <h1>PIC2:{{loop.index}}</h1>
-              <img src="{{picc }}">
-            {% endfor %}
+          
          <h1>姓名, {{ user.xm }}!</h1>
           <h1>手机号码, {{ user.sjhm }}!</h1>
           <h1>残疾类别, {{ user.cjlb }}!</h1>
