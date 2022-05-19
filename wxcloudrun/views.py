@@ -8,7 +8,18 @@ from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter
 from wxcloudrun.model import Counters,JDF,JDF33
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 
-
+@app.template_filter('strtolist')
+def strtolist(li):
+    str1 = 'https://7769-windows-7g06kkfp605c7962-1311495028.tcb.qcloud.la/'
+    str2 = 'cloud://windows-7g06kkfp605c7962.7769-windows-7g06kkfp605c7962-1311495028/'
+    if li==None:
+        return []
+    else:
+        temp_li = eval(li)
+        for index, s in enumerate(temp_li):
+            temp_li[index]=s.replace(str2, str1)
+        return temp_li
+    
 @app.route('/')
 def index():
     """
@@ -93,12 +104,9 @@ def getTempFileURL():
 
 @app.route('/1')
 def re():
-    url = 'https://windows-7g06kkfp605c7962-1311495028.ap-shanghai.service.tcloudbase.com/api/v1.0/jdf'
-    headers = {
-        'Authorization': 'Bearer TUKBtYVT1FOqVOQ6rl7yTGcTpRwkyXFn3-scnJtYyaz4i4h9GNS0LpAdlHTla5w_0Iukv9tRC2KADQhhfuG7jbQ24F9XBHod929XGYOOAOSuENXE9eD3t5fvwhbnAzEb'}
-    res = requests.get(url=url, headers=headers)
-    d = res.json()['data']
+    D=JDF.query.all()
     return render_template('1.html',DA=d)
+
 @app.route('/api/jdf33', methods=['POST'])
 def jdf33():
     params = request.get_json()
@@ -109,6 +117,7 @@ def jdf33():
     insert_counter(jdf)
     return make_succ_response(params) 
 
+#jdf表添加一条数据
 @app.route('/api/jdf', methods=['POST'])
 def jdf():
     params = request.get_json()
