@@ -102,7 +102,7 @@ def re():
 @app.route('/api/jdf33', methods=['POST'])
 def jdf33():
     params = request.get_json()
-    #print(params)
+    print(params)
     jdf = JDF33()
     jdf.xm=params['xm']
     jdf.sfzhm =params['sfzhm']
