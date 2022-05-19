@@ -104,7 +104,7 @@ def getTempFileURL():
 
 @app.route('/1')
 def re():
-    D=JDF.query.all()
+    d=JDF.query.all()
     return render_template('1.html',DA=d)
 
 @app.route('/api/jdf33', methods=['POST'])
