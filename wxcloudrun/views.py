@@ -1,31 +1,58 @@
+from wxcloudrun import db
 from datetime import datetime
-import requests
-import json
-from flask import Response
-from flask import render_template, request
+from flask import render_template, request,flash,make_response
 from run import app
-from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
+from wxcloudrun.dao import query_byid,delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
 from wxcloudrun.model import Counters,JDF,JDF33
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
+import json
 
-@app.template_filter('strtolist')
-def strtolist(li):
+#其他所有图片过滤器
+@app.template_filter('showallpic')
+def showallpic(li):
     str1 = 'https://7769-windows-7g06kkfp605c7962-1311495028.tcb.qcloud.la/'
     str2 = 'cloud://windows-7g06kkfp605c7962.7769-windows-7g06kkfp605c7962-1311495028/'
+    strtemp = ''
     if li==None:
-        return []
+        return strtemp
     else:
         temp_li = eval(li)
         for index, s in enumerate(temp_li):
-            temp_li[index]=s.replace(str2, str1)
-        return temp_li
-    
+            if index % 2 == 0:
+                strtemp = strtemp + '<div class=\"page\"><img style=\"margin: 10px 0px;width: 680px;height: 500px;background-color:darkgrey;object-fit: contain;\" src=\"' + s.replace(str2, str1) + '\">'
+            else:
+                strtemp = strtemp + '<img style=\"margin: 10px 0px;width: 680px;height: 500px;background-color:darkgrey;object-fit: contain;\" src=\"' + s.replace(str2, str1) + '\"></div>'
+        return strtemp
+#签名图片过滤器
+@app.template_filter('showqmpic')
+def showqmpic(li):
+    str1 = 'https://7769-windows-7g06kkfp605c7962-1311495028.tcb.qcloud.la/'
+    str2 = 'cloud://windows-7g06kkfp605c7962.7769-windows-7g06kkfp605c7962-1311495028/'
+    try:
+        return li.replace(str2, str1)
+    except :
+        return None
+
+
+
+
+
+
+@app.template_filter('format_cjlb')
+def format_cjlb(li):
+
+    arr=['sl','tl','zt','yy','js','zl','dc']
+    return arr[int(li)]
+
+
+
+
 @app.route('/')
 def index():
     """
     :return: 返回index页面
     """
-    return render_template('index.html')
+    return make_succ_response('index.html')
 
 
 @app.route('/api/count', methods=['POST'])
@@ -70,54 +97,21 @@ def count():
     else:
         return make_err_response('action参数错误')
 
+@app.route('/search', methods=('GET', 'POST'))
+def search():
+    if request.method == 'POST':
+        q = request.form['q']
+        counter = Counters()
+        counter.count = q
+        counter.created_at = datetime.now()
+        counter.updated_at = datetime.now()
+        insert_counter(counter)
+    return make_succ_response(counter.count)
 
 @app.route('/api/count', methods=['GET'])
 def get_count():
-    """
-    :return: 计数的值
-    """
     counter = Counters.query.filter(Counters.id == 1).first()
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
-
-@app.route('/api/test', methods=['GET'])
-def test():
-    """
-    :return: 计数的值
-    """
-    data = {
-    'no' : 1,
-    'name' : 'Runoob',
-    'url' : 'http://www.runoob.com'}
-    return make_succ_response(data) 
-
-
-@app.route('/getTempFileURL')
-def getTempFileURL():
-    url = 'http://api.weixin.qq.com/tcb/batchdownloadfile'
-    date={
-        "env": "prod-4gbn9qf2c1863879",
-        "file_list": ["cloud://prod-4gbn9qf2c1863879.7072-prod-4gbn9qf2c1863879-1311495028/41b62073121f73537ff9532391f2f3e.jpg"]
-            }
-    res = requests.post(url=url,data=date)
-    
-    return make_succ_response(res) 
-
-@app.route('/1')
-def re():
-    d=JDF.query.all()
-    return render_template('1.html',DA=d)
-
-@app.route('/api/jdf33', methods=['POST'])
-def jdf33():
-    params = request.get_json()
-    print(params)
-    jdf = JDF33()
-    jdf.xm=params['xm']
-    jdf.sfzhm =params['sfzhm']
-    insert_counter(jdf)
-    return make_succ_response(params) 
-
-#jdf表添加一条数据
 @app.route('/api/jdf', methods=['POST'])
 def jdf():
     params = request.get_json()
@@ -140,7 +134,20 @@ def jdf():
     jdf.pic1 = params['pic1']
     jdf.pic2 = params['pic2']
     jdf.qmpic = params['qmpic']
-    jdf.qmpic = params['qmpic']
-    jdf._updateTime = params['_updateTime']
     insert_counter(jdf)
-    return make_succ_response('123') 
+    return make_succ_response('123')
+
+@app.route('/api/jdf33', methods=['GET'])
+def jdf33():
+    D=JDF33.query.all()
+    return render_template('1.html', DA=D)
+
+@app.route('/jdf/<int:page>')
+def jdflist(page):
+    D = JDF.query.order_by(JDF.id.desc()).limit(50)
+    return render_template('list.html',DA=D,page=page)
+
+@app.route('/jdf/context/<id>')
+def context(id):
+    content=JDF.query.get(id)
+    return render_template('kfssbz.html',content=content)
