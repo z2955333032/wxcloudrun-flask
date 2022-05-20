@@ -2,7 +2,7 @@ from wxcloudrun import db
 from datetime import datetime
 from flask import render_template, request,flash,make_response
 from run import app
-from wxcloudrun.dao import query_byid,delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
+from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
 from wxcloudrun.model import Counters,JDF,JDF33
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 import json
