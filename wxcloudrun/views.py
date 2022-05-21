@@ -134,6 +134,7 @@ def jdf():
     jdf.pic1 = params['pic1']
     jdf.pic2 = params['pic2']
     jdf.qmpic = params['qmpic']
+    jdf._updateTime=params['_updateTime']
     insert_counter(jdf)
     return make_succ_response('123')
 
