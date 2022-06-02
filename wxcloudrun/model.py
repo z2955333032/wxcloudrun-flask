@@ -47,3 +47,63 @@ class JDF(db.Model):
     pic2 = db.Column(db.String(99))
     qmpic = db.Column(db.String(99))
     _updateTime = db.Column(db.String(99))
+    openid = db.Column(db.String(99),index=True)
+
+class KFSS(db.Model):
+    # 设置结构体表格名称
+    __tablename__ = 'kfss'
+
+    # 设定结构体对应表格的字段
+    id = db.Column(db.Integer, primary_key=True)
+    xm = db.Column(db.String(99),index=True)
+    xb = db.Column(db.String(99))
+    csny = db.Column(db.String(99))
+    sfzhm = db.Column(db.String(99),index=True)
+    hk = db.Column(db.String(99))
+    sjhm = db.Column(db.String(99))
+    cjzhm = db.Column(db.String(99))
+    jtzz = db.Column(db.String(99))
+    jhrxm = db.Column(db.String(99))
+    jhrzz = db.Column(db.String(99))
+    jtjjqk = db.Column(db.String(99))
+    cjlb = db.Column(db.String(99))
+    cjdj = db.Column(db.String(99))
+    sqxm = db.Column(db.String(99))
+    pic0 = db.Column(db.String(99))
+    pic1 = db.Column(db.String(99))
+    pic2 = db.Column(db.String(99))
+    pic3 = db.Column(db.String(99))
+    pic4 = db.Column(db.String(99))
+    qmpic = db.Column(db.String(99))
+    _updateTime = db.Column(db.String(99))
+    openid = db.Column(db.String(99),index=True)
+
+
+class GXHFJ(db.Model):
+    # 设置结构体表格名称
+    __tablename__ = 'gxhfj'
+
+    # 设定结构体对应表格的字段
+    id = db.Column(db.Integer, primary_key=True)
+    xm = db.Column(db.String(99),index=True)
+    xb = db.Column(db.String(99))
+    csny = db.Column(db.String(99))
+    sfzhm = db.Column(db.String(99),index=True)
+    hk = db.Column(db.String(99))
+    sjhm = db.Column(db.String(99))
+    cjzhm = db.Column(db.String(99))
+    jtzz = db.Column(db.String(99))
+    jhrxm = db.Column(db.String(99))
+    jhrzz = db.Column(db.String(99))
+    jtjjqk = db.Column(db.String(99))
+    cjlb = db.Column(db.String(99))
+    cjdj = db.Column(db.String(99))
+    sqxm = db.Column(db.String(99))
+    pic0 = db.Column(db.String(99))
+    pic1 = db.Column(db.String(99))
+    pic2 = db.Column(db.String(99))
+    pic3 = db.Column(db.String(99))
+    pic4 = db.Column(db.String(99))
+    qmpic = db.Column(db.String(99))
+    _updateTime = db.Column(db.String(99))
+    openid = db.Column(db.String(99),index=True)
