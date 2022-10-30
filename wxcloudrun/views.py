@@ -1,20 +1,19 @@
 from wxcloudrun import db
 from datetime import datetime
-from flask import render_template, request,flash,make_response
+from flask import render_template, request,flash,make_response,send_file
 from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
-from wxcloudrun.model import Counters,JDF,JDF33
+from wxcloudrun.model import Counters,JDF,JDF33,KFSS,GXHFJ
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 import json
-
+str1 = 'https://7769-windows-7g06kkfp605c7962-1311495028.tcb.qcloud.la/'
+str2 = 'cloud://windows-7g06kkfp605c7962.7769-windows-7g06kkfp605c7962-1311495028/'
 #其他所有图片过滤器
 @app.template_filter('showallpic')
 def showallpic(li):
-    str1 = 'https://7769-windows-7g06kkfp605c7962-1311495028.tcb.qcloud.la/'
-    str2 = 'cloud://windows-7g06kkfp605c7962.7769-windows-7g06kkfp605c7962-1311495028/'
     strtemp = ''
     if li==None:
-        return strtemp
+        return None
     else:
         temp_li = eval(li)
         for index, s in enumerate(temp_li):
@@ -26,8 +25,15 @@ def showallpic(li):
 #签名图片过滤器
 @app.template_filter('showqmpic')
 def showqmpic(li):
-    str1 = 'https://7769-windows-7g06kkfp605c7962-1311495028.tcb.qcloud.la/'
-    str2 = 'cloud://windows-7g06kkfp605c7962.7769-windows-7g06kkfp605c7962-1311495028/'
+    try:
+        return li.replace(str2, str1)
+    except :
+        return None
+#发票过滤器
+@app.template_filter('fp')
+def fp(li):
+    temp='< iframe src = \"test_pdf.pdf\" width = \"800\" height = \"600\" > < / iframe >'
+
     try:
         return li.replace(str2, str1)
     except :
@@ -35,12 +41,9 @@ def showqmpic(li):
 
 
 
-
-
-
+#残疾类别选择过滤器
 @app.template_filter('format_cjlb')
 def format_cjlb(li):
-
     arr=['sl','tl','zt','yy','js','zl','dc']
     return arr[int(li)]
 
@@ -54,7 +57,20 @@ def index():
     """
     return make_succ_response('index.html')
 
+@app.route('/pdf/<report_id>', methods=['GET'])
+def post(report_id):
+    headers = ("Content-Disposition", f"inline;filename={report_id}.pdf")#文件预览
+    as_attachment = False
+    # headers = (f"Content-Disposition", f"attachement;filename={report_id}.pdf")#文件下载
+    # as_attachment = True
+    file_path ='/static/bt.pdf'
+        #.format(str(report_id))
+    #print(file_path)
+    response = make_response(send_file(filename_or_fp=file_path, as_attachment=as_attachment))
+    response.headers[headers[0]] = headers[1]
+    return response
 
+ # 无用以后删除
 @app.route('/api/count', methods=['POST'])
 def count():
     """
@@ -107,7 +123,7 @@ def search():
         counter.updated_at = datetime.now()
         insert_counter(counter)
     return make_succ_response(counter.count)
-
+ # 无用以后删除
 @app.route('/api/count', methods=['GET'])
 def get_count():
     counter = Counters.query.filter(Counters.id == 1).first()
@@ -135,20 +151,43 @@ def jdf():
     jdf.pic2 = params['pic2']
     jdf.qmpic = params['qmpic']
     jdf._updateTime=params['_updateTime']
-    insert_counter(jdf)
-    return make_succ_response('123')
+    '''
+     jdf.xm = 'xm'
+    jdf.xb = '1'
+    jdf.csny = '1949-10-04'
+    jdf.sfzhm = '123'
+    jdf.hk ='1'
+    jdf.sjhm = '110'
+    jdf.cjzhm = '112'
+    jdf.jtzz = '杭州市西湖区玉古路178号'
+    jdf.jhrxm = 'jhrxm'
+    jdf.jhrzz = '杭州市西湖区玉古路178号'
+    jdf.jtjjqk = '0'
+    jdf.cjlb = '2'
+    jdf.cjdj = '3'
+    jdf.sqxm = '1'
+    jdf.pic0 = '[]'
+    jdf.pic1 = '[]'
+    jdf.pic2 = '[]'
+    jdf.qmpic = ''
+    jdf._updateTime = '2022-05-26'
+    '''
 
+
+    insert_counter(jdf)  #把以上数据插入数据库
+    return make_succ_response('123')
+ # 测试
 @app.route('/api/jdf33', methods=['GET'])
 def jdf33():
     D=JDF33.query.all()
     return render_template('1.html', DA=D)
-
+ # 鉴定费列表
 @app.route('/jdf/<int:page>')
 def jdflist(page):
-    D = JDF.query.order_by(JDF.id.desc()).limit(50)
-    return render_template('list.html',DA=D,page=page)
+    jdfbase = JDF.query.order_by(JDF.id.desc()).paginate(page=page, per_page=50)
+    return render_template('list.html', infos=jdfbase.items, pagination=jdfbase)
 
 @app.route('/jdf/context/<id>')
 def context(id):
     content=JDF.query.get(id)
-    return render_template('kfssbz.html',content=content)
+    return render_template('jdfsqb.html',content=content)
