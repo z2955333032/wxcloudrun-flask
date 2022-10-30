@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>
+</head>
+<body>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">姓名</th>
+      <th scope="col">身份证号码</th>
+      <th scope="col">上传时间</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for D in infos %}
+    <tr >
+      <th scope="row">{{loop.index+(50*(pagination.page-1))}}</th>
+      <td> <a href="{{url_for('context', id=D['id'])}}" >{{ D['xm'] }} </a></td>
+      <td>{{ D['sfzhm'] }}</td>
+      <td>{{ D['_updateTime']}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{%import '_macros.html' as pg%}
+{{pg.my_paginate(pagination,'jdflist')}}
+
+</body>
+</html>

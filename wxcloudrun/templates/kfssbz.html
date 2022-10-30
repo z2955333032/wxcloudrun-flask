@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>龙泉残疾人联合会</title>
+   <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename = 'css/A4.css') }}">
+    <script src="{{url_for('static', filename='js/jquery-3.6.0.min.js')}}" ></script>
+    <style>
+
+	 td{
+		border-width: 1px;
+		border-style: solid;
+         border-bottom-style:none;
+        text-align:center;
+        font-size: 14px;
+	 }
+	 td p{
+         margin: 2px 4px;
+         font-family: 宋体;
+     }
+
+	 </style>
+</head>
+
+<body style="--bleeding: 0.5cm;--margin: 1cm;">
+  <div class="page">
+    <!-- star of page1 -->
+      <p style="text-align:center;font-size: 29px;line-height: 30px;font-family: 宋体">
+            残疾人康复工程申请表
+      </p>
+      <table  style=" table-layout: fixed;word-break: break-all; word-wrap:break-word;margin: 0 auto;border-collapse:collapse;font-size: 14px; width:590px" >
+            <tr style="height: 40px;">
+              <td style="width:105px;">
+                <p ><span></span>姓 &nbsp;&nbsp;名</p>
+              </td>
+              <td   style="width:95px;">
+                <p ><span>{{content.xm}}</span></p></td>
+              <td   style="width:94px;">
+                <p ><span>性别</span></p>
+              </td>
+              <td    style="width:95px;">
+                <p ><span >{% if content.xb=='0' %}☑{% else %}□ {% endif %}男{% if content.xb=='1' %}☑{% else %}□ {% endif %}女</span></p>
+              </td>
+              <td   style="width:95px;">
+                <p ><span>出生时间</span></p>
+              </td>
+              <td  style="width:105px;">
+                 <p> <span>{{ content.csny }}</span></p>
+              </td>
+            </tr>
+          <tr style="height: 40px;">
+              <td style="width:105px;">
+                <p ><span></span>联系电话</p>
+              </td>
+              <td   style="width:95px;">
+                <p ><span>{{ content.sjhm }}</span></p>
+              </td>
+              <td   style="width:94px;">
+                <p ><span>身份证号</span></p>
+              </td>
+              <td    style="width:95px;">
+                <p ><span >{{ content.sfzhm }}</span></p>
+              </td>
+              <td   style="width:95px;">
+                <p ><span>残疾证号</span></p>
+              </td>
+              <td  style="width:105px;">
+                 <p> <span>{{ content.cjzhm }}</span></p>
+              </td>
+            </tr>
+          <tr style="height: 40px;">
+              <td style="width:105px;">
+                <p ><span></span>家庭住址</p>
+              </td>
+              <td   colspan="3" style="text-align: justify;width:284px;">
+                  <p ><span>{{ content.jtzz }}</span></p></td>
+              <td   style="width:95px;">
+                <p ><span>邮政编码</span></p>
+              </td>
+              <td  style="width:105px;">
+                 <p> <span></span></p>
+              </td>
+            </tr>
+
+          </table>
+      <table  style=" margin: 0 auto;border-collapse:collapse;font-size: 14px; width:590px" >
+            <tr style="height: 40px;">
+              <td style="width:105px;">
+                <p ><span></span>监护人姓名</p>
+              </td>
+                <td style="width:95px;">
+                <p ><span>{{ content.jhrxm }}</span></p>
+              </td>
+                <td style="text-align: justify;width:95px;">
+                <p ><span></span>监护人住址</p>
+              </td>
+                <td style="width:294px;">
+                <p ><span>{{ content.jhrzz }}</span></p>
+              </td>
+            </tr>
+      </table>
+      <table  style=" margin: 0 auto;border-collapse:collapse;font-size: 14px; width:590px" >
+            <tr style="height: 40px;">
+              <td style="width:105px;">
+                <p ><span></span>家庭经济</p>
+                  <p ><span></span>状&nbsp;&nbsp;况</p>
+              </td>
+                <td style="width:324px;">
+                <p style="text-align: justify;line-height: 20px;" ><span>{% if content.jtjjqk=='0' %}☑{% else %}□ {% endif %}  享受当地城乡居民最低生活保障</span></p>
+                    <p style="text-align: justify;line-height: 20px;"><span>{% if content.jtjjqk=='1' %}☑{% else %}□ {% endif %} 家庭人均年收入在低保标准100～150％之间</span></p>
+                    <p style="text-align: justify;line-height: 20px;"><span>{% if content.jtjjqk=='2' %}☑{% else %}□ {% endif %} 当地政府确定扩大的康复工程实施范围以内</span></p>
+              </td>
+                <td style="width:55px;">
+                <p style="text-align:center;line-height: 20px;" ><span>户口</span></p>
+
+              </td>
+                <td style="width:105px;">
+                    <p style="text-align: justify;line-height: 20px;" ><span>{% if content.hk=='0' %}☑{% else %}□ {% endif %} 农业户</span></p>
+                    <p style="text-align: justify;line-height: 20px;"><span>{% if content.hk=='1' %}☑{% else %}□ {% endif %} 非农业户</span></p>
+              </td>
+            </tr>
+      </table>
+      <table  style=" table-layout: fixed;word-break: break-all; word-wrap:break-word;margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 30px;">
+              <td style="width:105px;"  >
+                <p style="">
+                  <span>残疾类别</span>
+                </p>
+                  <p style="">
+                  <span>和 程 度</span>
+                </p>
+              </td>
+              <td style="width:484px;padding: 6px 2px"   >
+                <p style="text-align: justify;line-height: 16px;">
+                  <span id="sl" >□</span>视力残疾：
+                  <span id="sl0" style="margin-right: 2px">○</span> 一级
+                  <span id="sl1" style="margin-right: 2px">○</span> 二级
+                  <span id="sl2" style="margin-right: 2px">○</span> 三级
+                  <span id="sl3" style="margin-right: 2px">○</span> 四级
+
+                </p>
+                <p style="text-align: justify;line-height: 16px;">
+
+                    <span id="tl" style="">□</span>听力残疾：
+                  <span id="tl0" style="margin-right: 2px">○</span> 一级
+                  <span id="tl1" style="margin-right: 2px">○</span> 二级
+                  <span id="tl2" style="margin-right: 2px">○</span> 三级
+                  <span id="tl3" style="margin-right: 2px">○</span> 四级
+
+                </p>
+                  <p style="text-align: justify;line-height: 16px;">
+                  <span id="zt" style="">□</span>肢体残疾：
+                  <span id="zt0" style="margin-right: 2px">○</span> 一级
+                  <span id="zt1" style="margin-right: 2px">○</span> 二级
+                  <span id="zt2" style="margin-right: 2px">○</span> 三级
+                  <span id="zt3" style="margin-right: 2px">○</span> 四级
+                </p>
+                  <p style="text-indent:91px;text-align: justify;line-height: 16px;">
+                  <span style="">其中：</span>
+                  </p>
+                  <p style="text-indent:91px;text-align: justify;line-height: 16px;">
+                      <span style="">○左小腿截肢</span>
+                      <span style="">○右小腿截肢</span>
+                      <span style="">○左大腿截肢</span>
+                      <span style="">○右大腿截肢</span>
+                  </p>
+                  <p style="text-indent:91px;text-align: justify;line-height: 16px;">
+                      <span style="margin-right: 49px">○左髋关节严重损坏</span>
+                      <span style="">○右髋关节严重损坏</span>
+
+                  </p>
+                  <p style="text-indent:91px;text-align: justify;line-height: 16px;">
+                      <span style="margin-right: 49px">○左膝关节严重损坏</span>
+                      <span style="">○右膝关节严重损坏</span>
+                  </p>
+                <p style="text-align: justify;line-height: 16px;">
+                  <span id="yy" style="">□</span>言语残疾：
+                  <span id="yy0" style="margin-right: 2px">○</span> 一级
+                  <span id="yy1" style="margin-right: 2px">○</span> 二级
+                  <span id="yy2" style="margin-right: 2px">○</span> 三级
+                  <span id="yy3" style="margin-right: 2px">○</span> 四级
+                </p>
+                  <p style="text-align: justify;line-height: 16px;">
+                  <span id="js" style="">□</span>精神残疾：
+                  <span id="js0" style="margin-right: 2px">○</span> 一级
+                  <span id="js1" style="margin-right: 2px">○</span> 二级
+                  <span id="js2" style="margin-right: 2px">○</span> 三级
+                  <span id="js3" style="margin-right: 2px">○</span> 四级
+                </p>
+                  <p style="text-align: justify;line-height: 16px;">
+                  <span id="zl" style="">□</span>智力残疾：
+                  <span id="zl0" style="margin-right: 2px">○</span> 一级
+                  <span id="zl1" style="margin-right: 2px">○</span> 二级
+                  <span id="zl2" style="margin-right: 2px">○</span> 三级
+                  <span id="zl3" style="margin-right: 2px">○</span> 四级
+                </p>
+                  <p style="text-align: justify;line-height: 16px;">
+                  <span id="dc" style="">□</span>多重残疾：
+                  <span id="dc0" style="margin-right: 2px">○</span> 一级
+                  <span id="dc1" style="margin-right: 2px">○</span> 二级
+                  <span id="dc2" style="margin-right: 2px">○</span> 三级
+                  <span id="dc3" style="margin-right: 2px">○</span> 四级
+                </p>
+
+              </td>
+            </tr>
+      </table>
+       <table  style=" ;table-layout: fixed;word-break: break-all; word-wrap:break-word;margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 30px;">
+              <td style="width:105px;"  >
+                <p style="">
+                  <span>本人或</span>
+                </p>
+                  <p style="">
+                  <span>监护人</span>
+                </p>
+                  <p style="">
+                  <span>申&nbsp;请</span>
+                </p>
+              </td>
+              <td style="width:484px;padding: 6px 2px"   >
+                <p style="text-indent: 30px;text-align: justify;line-height: 16px;">
+                    <span >本人（或我的被监护人</span>
+                    <span style="text-decoration:underline;margin-right: 4px">
+                    _________
+                   </span>
+                    <span>）基本情况如上。希望获得浙江省“残疾人康复工程”的康复服务，具体请求享受康复服务的内容如下：</span>
+                </p>
+                <p style="margin-top: 6px;text-indent: 30px;text-align: justify;line-height: 16px;">
+                    <span style="margin-right: 40px">{% if content.sqxm=='0' %}☑{% else %}□ {% endif %} 白内障复明手术补助</span>
+                    <span style="">{% if content.sqxm=='1' %}☑{% else %}□ {% endif %} 髋关节置换手术补助</span>
+                </p>
+                  <p style="margin-top: 4px;text-indent: 30px;text-align: justify;line-height: 16px;">
+                    <span style="">{% if content.sqxm=='2' %}☑{% else %}□ {% endif %} 膝关节置换手术补助 </span>
+                    <span style="display: inline-block;text-indent: 40px">□ 免费验配助视器</span>
+                </p>
+                  <p style="margin-top: 4px;text-indent: 30px;text-align: justify;line-height: 16px;">
+                    <span style="">□ 免费验配助听器 </span>
+                    <span style="display: inline-block;text-indent: 68px">□ 免费安装下肢假肢</span>
+                </p>
+                  <p style="margin-top: 4px;text-indent: 30px;text-align: justify;line-height: 16px;">
+                    <span style="margin-right: 54px">□ 盲人定向行走训练 </span>
+                    <span style="">□ 其它基本辅助器具免费配置或资助</span>
+                </p>
+                  <p style="margin-top: 4px;text-indent: 30px;text-align: justify;line-height: 16px;">
+                    <span style="margin-right: 110px">□ 康复救助 </span>
+                    <span style="">□ 残疾评定门诊费补助</span>
+                </p>
+               <p style="margin-top: 4px;text-indent: 30px;text-align: justify;line-height: 16px;">
+                    <span style="">特此申请</span>
+                </p>
+                  <p style="margin-top: 10px;text-align: justify;line-height: 24px;text-indent: 220px">
+                    <span>申请人签字：</span><span style="text-decoration:underline">_______________</span>
+                      <img  style="width: 110px;height: 30px;object-fit: contain;position:absolute;left:510px;top:750px;z-index:1;" src="{{ content.qmpic |showqmpic }}" />
+                </p>
+                  <p style="text-align: justify;line-height: 24px;text-indent: 266px;margin-top: 10px">
+                    <span style="" >&nbsp;&nbsp;年&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+              </td>
+            </tr>
+           <tr style="height: 30px;border-bottom :solid 1px black ">
+              <td style="width:589px"  colspan="10" >
+                <p style="font-weight:bold" >
+                （以上各栏由申请人填写。遇“
+               <span style="font-size: 18px">□</span>
+                    ”和“
+               <span style="font-size: 20px">○</span>
+                    ”时，请在选择项打“√”）
+                </p>
+              </td>
+            </tr>
+            <tr style="height: 30px;">
+              <td style="width:105px;"  >
+                <p style="">
+                  <span>社区、村</span>
+                </p>
+                  <p style="">
+                  <span>（居）委会</span>
+                </p>
+                  <p style="">
+                  <span>评议意见</span>
+                </p>
+              </td>
+                <td style="width:484px;padding: 6px 2px"   >
+                    <p style="margin-top: 10px;text-align: justify;line-height: 24px;text-indent: 320px">
+                    <span>（盖章）</span>
+                </p>
+                  <p style="text-align: justify;line-height: 24px;text-indent: 266px;margin-top: 6px">
+                    <span style="" >&nbsp;&nbsp;年&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+                </td></tr>
+            <tr style="height: 30px;">
+              <td style="width:105px;"  >
+                <p style="">
+                  <span>乡镇（街道）</span>
+                </p>
+                  <p style="">
+                  <span>残联初审</span>
+                </p>
+                  <p style="">
+                  <span>意&nbsp;&nbsp;见</span>
+                </p>
+              </td>
+                <td style="width:484px;padding: 6px 2px"   >
+                    <p style="margin-top: 10px;text-align: justify;line-height: 24px;text-indent: 320px">
+                    <span>（盖章）</span>
+                </p>
+                  <p style="text-align: justify;line-height: 24px;text-indent: 266px;margin-top: 6px">
+                    <span style="" >&nbsp;&nbsp;年&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+                </td></tr>
+           <tr style="border-bottom :solid 1px black;height: 30px;">
+              <td style="width:105px;"  >
+                <p style="">
+                  <span>县（市、区）</span>
+                </p>
+                  <p style="">
+                  <span>残联复审</span>
+                </p>
+                  <p style="">
+                  <span>意&nbsp;&nbsp;见</span>
+                </p>
+              </td>
+                <td style="width:484px;padding: 6px 2px"   >
+                    <p>
+
+                    </p>
+                    <p style="margin-top: 10px;text-align: justify;line-height: 24px;text-indent: 320px">
+                    <span>（盖章）</span>
+                </p>
+                  <p style="text-align: justify;line-height: 24px;text-indent: 266px;margin-top: 6px">
+                    <span style="" >&nbsp;&nbsp;年&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+                </td></tr>
+      </table>
+
+  </div>
+<!-- end of page1 -->
+ <!-- start of pic -->
+{{content.pic1 |showallpic|safe }}
+{{content.pic2 |showallpic|safe }}
+<script type="text/javascript">
+$(document).ready(function(){
+     $("#{{content.cjlb |format_cjlb}}").html("☑");
+     $("#{{content.cjlb |format_cjlb}}{{content.cjdj}}").html("☑");
+})
+</script>
+</body>
+</html>

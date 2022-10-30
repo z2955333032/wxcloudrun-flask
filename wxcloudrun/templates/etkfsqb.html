@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+ <!-- ☑无障碍阅读☑☑☑ ✔○√❤-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+ <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename = 'css/A4.css') }}">
+  <!--    <link rel="stylesheet" href="../static/css/A4.css">-->
+
+    <style>
+
+	 td{
+		border-width: 1px;
+		border-style: solid;
+         border-bottom-style:none;
+        text-align:center;
+        font-size: 14px;
+	 }
+	 td p{
+         margin: 2px 4px;
+         font-family: 宋体;
+     }
+	 </style>
+
+
+</head>
+
+<body style="--bleeding: 0.5cm;--margin: 1cm;">
+  <div class="page">
+    <!-- star of page1 -->
+      <p style="text-align:center;font-size: 29px;line-height: 30px;font-family: 宋体">
+            浙江省残疾儿童康复服务申请表
+      </p>
+<table  style=" margin: 0 auto;border-collapse:collapse;font-size: 14px; width:590px" >
+            <tr style="height: 40px;">
+              <td style="width:105px;">
+                <p ><span></span>姓 &nbsp;&nbsp;名</p>
+              </td>
+              <td   style="width:87px;">
+                <p ><span>{{ content.xm }}</span></p>
+              <td   style="width:42px;">
+                <p ><span>性别</span></p>
+              </td>
+              <td    style="width:67px;">
+                <p ><span >□男□女</span></p>
+              </td>
+              <td   style="width:70px;">
+                <p ><span>出生时间</span></p>
+              </td>
+              <td  style="width:99px;">
+                 <p> <span>{{ content.csny }}</span></p>
+              </td>
+              <td   style="width:42px;">
+                <p style="text-align: center;"><span>民族</span></p>
+              </td>
+              <td style="width:77px;">
+              <p> <span>{{ content.mz }}</span></p>
+              </td>
+            </tr></table>
+    <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+<tr style="height: 30px;">
+              <td style="width:105px;">
+                <p ><span>身份证号</span></p>
+              </td>
+              <td style="width:196px;">
+                <p ><span>{{ content.sfzhm }}</span> </p>
+              </td>
+              <td style="width:70px;">
+                <p ><span>残疾证号</span></p>
+              </td>
+              <td style="width:218px;">
+                <p ><span></span> </p>
+              </td>
+</tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+<tr style="height: 30px;">
+              <td style="width:105px;">
+                <p ><span>监护人姓名</span></p>
+              </td>
+              <td style="width:136px;">
+                <p ><span></span> </p>
+              </td>
+              <td style="width:124px;">
+                <p ><span>与被监护人关系</span></p>
+              </td>
+              <td style="width:224px;">
+                <p ><span></span> </p>
+              </td>
+</tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+<tr style="height: 30px;">
+              <td style="width:105px;">
+                <p ><span>监  护  人</span></p>
+                   <p ><span>身份证号码</span></p>
+              </td>
+              <td style="width:484px;">
+                <p ><span></span> </p>
+              </td>
+</tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+<tr style="height: 30px;">
+              <td style="width:105px;">
+                <p ><span></span>户籍地址</p>
+              </td>
+              <td style="width:300px;">
+                <p ><span></span> </p>
+              </td>
+    <td style="width:67px;">
+                <p ><span></span>邮政编码</p>
+              </td>
+              <td style="width:117px;">
+                <p ><span></span> </p>
+              </td>
+</tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+<tr style="height: 30px;">
+              <td style="width:105px;">
+                <p ><span>居住证或缴纳</span></p>
+                  <p ><span>社保地址</span></p>
+                  <p ><span>省外户籍填）</span></p>
+              </td>
+              <td style="width:300px;">
+                <p style="text-align: justify;"><span >浙江省杭州市批发市场四季青服装市场地址杭州二市江干区德胜东路3678号</span> </p>
+              </td>
+    <td style="width:67px;">
+                <p ><span></span>邮政编码</p>
+              </td>
+              <td style="width:117px;">
+                <p ><span></span> </p>
+              </td>
+</tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 30px;">
+              <td style="width:105px"  >
+                <p style="">
+                  监护人住址
+                </p>
+              </td>
+              <td style="width:484px"   >
+                <p style="text-align: justify;line-height: 18px;">
+                 <span style="">□同前地址 □其他：浙江省杭州市批发市场四季青服装市场地址杭州二市江干区德胜东路3678号</span>
+                </p>
+              </td>
+            </tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 30px;">
+              <td style="width:105px"  >
+                <p style="">监  护  人</p>
+                <p style="">联系方式</p>
+              </td>
+              <td style="width:484px"   >
+                <p style="text-align: justify;">
+                  手机： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;座机：
+                </p>
+              </td>
+            </tr></table>
+       <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 40px;">
+              <td style="width:105px"  >
+                <p style="">
+                  家庭经济状况
+                </p>
+              </td>
+              <td style="width:484px"   >
+                <p style="text-align: justify;">
+                    <span style="margin-right: 20px">□低保</span>
+                    <span style="margin-right: 20px">□低保边缘</span>
+                    <span style="margin-right: 20px;">□其他</span>
+                    <span style="margin-right: 20px;">□孤残儿童</span>
+                </p>
+              </td>
+            </tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 30px;">
+              <td style="width:105px"  >
+                <p style="">
+                  需要康复的
+                </p>
+                  <p style="">
+                  类别和程度
+                </p>
+              </td>
+              <td style="width:484px;padding: 8px 2px"   >
+                <p style="text-align: justify;line-height: 16px;">
+                    <span >□视力残疾：残疾程度：</span>
+                  <span style="margin-right: 2px">○ 一级</span>
+                  <span style="margin-right: 2px">○ 二级</span>
+                  <span style="margin-right: 2px">○ 三级</span>
+                  <span style="margin-right: 2px">○ 四级</span>
+
+                </p>
+                <p style="text-align: justify;line-height: 16px;">
+
+                    <span style="">□听力残疾：残疾程度：</span>
+                  <span style="margin-right: 2px">○ 一级</span>
+                  <span style="margin-right: 2px">○ 二级</span>
+                  <span style="margin-right: 2px">○ 三级</span>
+                  <span style="margin-right: 2px">○ 四级</span>
+
+                </p>
+                <p style="text-align: justify;line-height: 16px;">
+                      <span style="">□言语残疾：残疾程度：</span>
+                  <span style="margin-right: 2px">○ 一级</span>
+                  <span style="margin-right: 2px">○ 二级</span>
+                  <span style="margin-right: 2px">○ 三级</span>
+                  <span style="margin-right: 2px">○ 四级</span>
+                </p>
+                  <p style="text-align: justify;line-height: 16px;">
+                      <span style="">□肢体残疾：残疾程度：</span>
+                  <span style="margin-right: 2px">○ 一级</span>
+                  <span style="margin-right: 2px">○ 二级</span>
+                  <span style="margin-right: 2px">○ 三级</span>
+                  <span style="margin-right: 2px">○ 四级</span>
+                </p>
+                  <p style="text-align: justify;line-height: 16px;">
+                      <span style="">□智力残疾：残疾程度：</span>
+                  <span style="margin-right: 2px">○ 一级</span>
+                  <span style="margin-right: 2px">○ 二级</span>
+                  <span style="margin-right: 2px">○ 三级</span>
+                  <span style="margin-right: 2px">○ 四级</span>
+                </p>
+                  <p style="text-align: justify;line-height: 16px;">
+                      <span style="">□精神残疾：残疾程度：</span>
+                  <span style="margin-right: 2px">○ 一级</span>
+                  <span style="margin-right: 2px">○ 二级</span>
+                  <span style="margin-right: 2px">○ 三级</span>
+                  <span style="margin-right: 2px">○ 四级</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;">
+                    <span style="">□多重残疾:</span>
+                    <span style="text-indent:84px;margin-right: 18px" >□视力</span>
+                    <span style="margin-right: 18px" >□听力</span>
+                    <span style="margin-right: 18px" >□言语</span>
+                    <span style="margin-right: 18px" >□肢体</span>
+                    <span style="margin-right: 18px" >□智力</span>
+                    <span style="" >□精神</span>
+
+                </p>
+                <p style="text-align: justify;text-indent: 84px;line-height: 16px;">
+                  <span  >残疾程度：</span>
+                  <span style="margin-right: 2px">○ 一级</span>
+                  <span style="margin-right: 2px">○ 二级</span>
+                  <span style="margin-right: 2px">○ 三级</span>
+                  <span style="margin-right: 2px">○ 四级</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;">
+                  <span >□孤独症</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;">
+                  <span  >□无残疾证，主要诊断：</span>
+                  <span style="text-decoration:underline;margin-right: 8px">
+                    ____________
+                  </span>
+                  <span  >□康复类别：</span>
+                  <span style="text-decoration:underline;margin-right: 4px">
+                    ____________
+                  </span>
+                </p>
+              </td>
+            </tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 30px;">
+              <td style="width:105px"  >
+                <p style="">
+                  <span style=""  >监护人</span>
+                </p>
+                <p style="">
+                  <span style=""  >申 &nbsp;请</span>
+                </p>
+              </td>
+              <td style="width:484px ;padding: 8px 2px"   >
+                <p style="text-align: justify;text-indent: 28px;line-height: 16px;">
+                  <span  >我的被监护人</span>
+                  <span style="text-decoration:underline;margin-right: 4px">
+                   ____________
+                  </span>
+                  <span style="" >基本情况如上，申请浙江省残疾儿童康复服务，并承诺保证申请所填内容均属实，所提交的各类证明材料均合法真实，已经本人（监护人）确认属实，且承诺本康复服务周期内未享受困难家庭重病和残疾儿童集中养育康复项目、外省（自治区、直辖市）残疾儿童康复服务政策等；若有虚假或隐瞒将承担由此带来的一切后果和法律责任。具体申请内容如下： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;margin: 4px">
+                    <span style="margin-right: 18px" >□视力康复训练</span>
+                    <span style="margin-right: 18px" >□听力言语康复训练</span>
+                    <span style="margin-right: 18px" >□肢体（含脑瘫）康复训练</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;margin: 4px">
+                    <span style="margin-right: 18px" >□智力康复训练</span>
+                    <span style="margin-right: 18px" >□孤独症康复训练</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;margin: 4px">
+                  <span style="margin-right: 18px" >□辅助器具适配</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;margin: 4px">
+                    <span style="margin-right: 18px" >□免费人工耳蜗植入</span>
+                    <span style="margin-right: 18px" >□自费安装人工耳蜗补贴</span>
+                    <span style="margin-right: 18px" >□体外言语处理器（声音处理器、音频处理器）升级补贴</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;margin: 4px">
+                    <span style="margin-right: 18px" >□肢体矫治</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;margin: 4px">
+                    <span style="margin-right: 18px" >□困难家庭残疾儿童康复生活补贴</span>
+                </p>
+                <p style="text-align: justify;line-height: 16px;margin: 4px;">
+                    <span style="margin-right: 18px" >□其他（请注明）：</span>
+                  <span style="text-decoration:underline;">
+                    <span>
+                        ______________
+                    </span>
+                  </span>
+
+                </p>
+                  <p style="text-align: justify;line-height: 16px;text-indent: 286px;margin-top: 10px">
+                    <span style="" >监护人签字:</span>
+                  <span style="text-decoration:underline;">
+                    <span>
+                        ____________
+                    </span>
+                  </span>
+
+
+                    <img  style="width: 110px;height: 30px;object-fit: contain;position:absolute;left:575px;top:960px;z-index:1;" src="{{ content.qmpic |showqmpic }}" />
+
+
+                </p>
+                  <p style="text-align: justify;line-height: 16px;text-indent: 336px;margin-top: 10px">
+                    <span style="" >2022年05月06日</span>
+                </p>
+              </td>
+            </tr>
+          <tr style="height: 30px;border-bottom :solid 1px black ">
+              <td style="width:589px"  colspan="10" >
+                <p style="">
+                （以上各栏由申请人填写。遇“
+               <span style="font-size: 18px">□</span>
+                    ”和“
+               <span style="font-size: 20px">○</span>
+                    ”时，请在选择项打“√”）
+                </p>
+              </td>
+            </tr>
+      </table>
+
+    <!-- End of page1 -->
+  </div>
+  <!-- start of page2 -->
+  <div class="page">
+    <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 450px;">
+              <td style="width:105px"  >
+                <p style="">
+                  县（市、区）
+                </p>
+                  <p style="">
+                 残联审核意见
+                </p>
+              </td>
+              <td style="width:484px"   >
+                  <p style="line-height: 320px;">
+                       &nbsp;
+                  </p>
+                <p style="text-align: justify;line-height: 16px;text-indent: 336px;margin:50px 30px">
+                    <span style="font-size: 18px" >（盖章）</span>
+                </p>
+                  <p style="text-align: justify;line-height: 16px;text-indent: 326px;margin-top: 10px">
+                    <span style="" >&nbsp;&nbsp;年&nbsp;&nbsp;月&nbsp;&nbsp;日</span>
+                </p>
+              </td>
+            </tr></table>
+      <table  style=" margin: 0 auto;border-top:none; border-collapse:collapse;font-size: 14px; width:590px" >
+              <tr style="height: 450px;border-bottom :solid 1px black">
+              <td style="width:105px"  >
+                <p style="margin: 0 4px">
+                  残疾儿童及监护人身份证（或户口簿、监护人居住证或社保参保证明）、残疾证明资料（残疾人证或评定表、医学诊断证明书）粘贴处（可附页）
+                </p>
+              </td>
+              <td style="width:484px;"   >
+                  <p style="line-height: 320px;">
+                       &nbsp;
+                  </p>
+              </td>
+            </tr>
+      </table>
+        <p style="margin-top: 3px;text-indent: 45px">
+        <span style="font-size: 12px;">
+           说明：此表填写后由残联等部门存档备查。
+        </span>
+       </p>
+  </div>
+<!-- End of your page2 -->
+
+<!-- start of your PIC -->
+
+{{content.pic1 |showallpic|safe }}
+
+
+
+
+
+</body>
+
+</html>

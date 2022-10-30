@@ -1,0 +1,27 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+     {% for user in DA %}
+
+
+<!-- start of your PIC -->
+
+<h1>图片, {{ user.pic1 }}!</h1>
+{% for picc in user.pic1 |strtolist %}
+         <h1>PIC1:{{loop.index}}</h1>
+              <img src="{{picc }}">
+            {% endfor %}
+
+
+         <h1>姓名, {{ user.xm }}!</h1>
+
+          <h1>身份证号码, {{ user.sfzhm }}!</h1>
+    {% endfor %}
+
+</body>
+</html>
