@@ -190,4 +190,4 @@ def jdflist(page):
 @app.route('/jdf/context/<id>')
 def context(id):
     content=JDF.query.get(id)
-    return render_template('jdfsqb.html',content=content)
+    return render_template('kfssbz.html',content=content)
