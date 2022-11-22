@@ -223,7 +223,15 @@ def jdf():
 def jdf33():
 
     D=JDF33.query.all()
-    return render_template('1.html', DA=D)
+    for person in D:
+        print(person.xm, person.sfzhm, person.pic1)
+    payload = []
+    content = {}
+    for person in D:
+        content = {'xm': person.xm, 'sfzhm': person.sfzhm}
+        payload.append(content)
+        content = {}
+    return jsonify(payload)
  # 鉴定费列表
 @app.route('/jdf/<int:page>')
 def jdflist(page):
