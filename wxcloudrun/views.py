@@ -228,7 +228,7 @@ def jdf33():
     payload = []
     content = {}
     for person in D:
-        content = {'xm': person.xm, 'sfzhm': person.sfzhm}
+        content = {'xm': person.xm, 'sfzhm': person.sfzhm,'id':person.id,'_updateTime':person._updateTime}
         payload.append(content)
         content = {}
     return jsonify(payload)
