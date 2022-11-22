@@ -1,7 +1,7 @@
 from wxcloudrun import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
-from flask import render_template, request,flash,make_response,send_file,session,redirect
+from flask import render_template, request,flash,make_response,send_file,session,redirect,jsonify
 from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
 from wxcloudrun.model import Counters,JDF,JDF33,KFSS,GXHFJ,USER
