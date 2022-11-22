@@ -222,7 +222,7 @@ def jdf():
 @app.route('/api/jdf33', methods=['GET'])
 def jdf33():
 
-    D=JDF33.query.all()
+    D=JDF.query.all()
     for person in D:
         print(person.xm, person.sfzhm, person.pic1)
     payload = []
